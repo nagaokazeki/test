@@ -1,0 +1,83 @@
+---
+id: 226370
+name: spreadsheet -> Google BigQuery
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 1290
+      name: MyGoogle
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1jw8bRQzC4S8bYCdm9elVcyOcBaz1GQJ46D-jlrTL790/edit?usp=drive_link
+    worksheet_title: シート1
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: id
+      type: long
+    - name: name
+      type: string
+    - name: mail
+      type: string
+    - name: prefecture
+      type: long
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: nagaoka_test
+    table: demo
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options:
+    - name: ああ
+      type: DATE
+      mode: NULLABLE
+      description: ''
+    template_table: ''
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: name
+      src: name
+      default: ''
+      type: string
+    - name: mail
+      src: mail
+      default: ''
+      type: string
+    - name: prefecture
+      src: prefecture
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels:
+- name: nagaoka
+  id: 3751
+job_schedules: []
+triggers: []
+notifications: []

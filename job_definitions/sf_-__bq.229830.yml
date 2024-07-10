@@ -1,0 +1,396 @@
+---
+id: 229830
+name: sf -> bq
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: soql_file
+    salesforce_connection:
+      id: 150
+      name: csdemo-Salesforce
+    object: Opportunity
+    object_acquisition_method: soql
+    api_version: '54.0'
+    transfer_mode: type_interfence
+    include_deleted_or_archived_records: false
+    soql: |-
+      SELECT
+        Id,
+        IsDeleted,
+        AccountId,
+        IsPrivate,
+        Name,
+        Description,
+        StageName,
+        Amount,
+        Probability,
+        ExpectedRevenue,
+        TotalOpportunityQuantity,
+        CloseDate,
+
+        NextStep,
+        LeadSource,
+        IsClosed,
+        IsWon,
+        ForecastCategory,
+        ForecastCategoryName,
+        CampaignId,
+        HasOpportunityLineItem,
+        Pricebook2Id,
+        OwnerId,
+        CreatedDate,
+        CreatedById,
+        LastModifiedDate,
+        LastModifiedById,
+        SystemModstamp,
+        LastActivityDate,
+        PushCount,
+        LastStageChangeDate,
+        FiscalQuarter,
+        FiscalYear,
+        Fiscal,
+        ContactId,
+        LastViewedDate,
+        LastReferencedDate,
+        HasOpenActivity,
+        HasOverdueTask,
+        LastAmountChangedHistoryId,
+        LastCloseDateChangedHistoryId,
+        primeNumber__DeliveryInstallationStatus__c,
+        primeNumber__TrackingNumber__c,
+        primeNumber__OrderNumber__c,
+        primeNumber__CurrentGenerators__c,
+        primeNumber__MainCompetitors__c
+      FROM Opportunity
+    custom_variables: []
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: Id
+        type: string
+      - name: IsDeleted
+        type: boolean
+      - name: AccountId
+        type: string
+      - name: IsPrivate
+        type: boolean
+      - name: Name
+        type: string
+      - name: Description
+        type: string
+      - name: StageName
+        type: string
+      - name: Amount
+        type: double
+      - name: Probability
+        type: double
+      - name: ExpectedRevenue
+        type: double
+      - name: TotalOpportunityQuantity
+        type: string
+      - name: CloseDate
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: NextStep
+        type: string
+      - name: LeadSource
+        type: string
+      - name: IsClosed
+        type: boolean
+      - name: IsWon
+        type: boolean
+      - name: ForecastCategory
+        type: string
+      - name: ForecastCategoryName
+        type: string
+      - name: CampaignId
+        type: string
+      - name: HasOpportunityLineItem
+        type: boolean
+      - name: Pricebook2Id
+        type: string
+      - name: OwnerId
+        type: string
+      - name: CreatedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: CreatedById
+        type: string
+      - name: LastModifiedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastModifiedById
+        type: string
+      - name: SystemModstamp
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastActivityDate
+        type: string
+      - name: PushCount
+        type: long
+      - name: LastStageChangeDate
+        type: string
+      - name: FiscalQuarter
+        type: long
+      - name: FiscalYear
+        type: long
+      - name: Fiscal
+        type: string
+      - name: ContactId
+        type: string
+      - name: LastViewedDate
+        type: string
+      - name: LastReferencedDate
+        type: string
+      - name: HasOpenActivity
+        type: boolean
+      - name: HasOverdueTask
+        type: boolean
+      - name: LastAmountChangedHistoryId
+        type: string
+      - name: LastCloseDateChangedHistoryId
+        type: string
+      - name: primeNumber__DeliveryInstallationStatus__c
+        type: string
+      - name: primeNumber__TrackingNumber__c
+        type: long
+      - name: primeNumber__OrderNumber__c
+        type: long
+      - name: primeNumber__CurrentGenerators__c
+        type: string
+      - name: primeNumber__MainCompetitors__c
+        type: string
+      quote: "\""
+      escape: "\""
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: nagaoka_test
+    table: sf_test2
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    partitioning_type: time_unit_column
+    time_partitioning:
+      type: YEAR
+      field: CloseDate
+      expiration_ms: 
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: Id
+      src: Id
+      default: ''
+      type: string
+    - name: IsDeleted
+      src: IsDeleted
+      default: ''
+      type: boolean
+    - name: AccountId
+      src: AccountId
+      default: ''
+      type: string
+    - name: IsPrivate
+      src: IsPrivate
+      default: ''
+      type: boolean
+    - name: Name
+      src: Name
+      default: ''
+      type: string
+    - name: Description
+      src: Description
+      default: ''
+      type: string
+    - name: StageName
+      src: StageName
+      default: ''
+      type: string
+    - name: Amount
+      src: Amount
+      default: ''
+      type: double
+    - name: Probability
+      src: Probability
+      default: ''
+      type: double
+    - name: ExpectedRevenue
+      src: ExpectedRevenue
+      default: ''
+      type: double
+    - name: TotalOpportunityQuantity
+      src: TotalOpportunityQuantity
+      default: ''
+      type: string
+    - name: CloseDate
+      src: CloseDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: NextStep
+      src: NextStep
+      default: ''
+      type: string
+    - name: LeadSource
+      src: LeadSource
+      default: ''
+      type: string
+    - name: IsClosed
+      src: IsClosed
+      default: ''
+      type: boolean
+    - name: IsWon
+      src: IsWon
+      default: ''
+      type: boolean
+    - name: ForecastCategory
+      src: ForecastCategory
+      default: ''
+      type: string
+    - name: ForecastCategoryName
+      src: ForecastCategoryName
+      default: ''
+      type: string
+    - name: CampaignId
+      src: CampaignId
+      default: ''
+      type: string
+    - name: HasOpportunityLineItem
+      src: HasOpportunityLineItem
+      default: ''
+      type: boolean
+    - name: Pricebook2Id
+      src: Pricebook2Id
+      default: ''
+      type: string
+    - name: OwnerId
+      src: OwnerId
+      default: ''
+      type: string
+    - name: CreatedDate
+      src: CreatedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: CreatedById
+      src: CreatedById
+      default: ''
+      type: string
+    - name: LastModifiedDate
+      src: LastModifiedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastModifiedById
+      src: LastModifiedById
+      default: ''
+      type: string
+    - name: SystemModstamp
+      src: SystemModstamp
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastActivityDate
+      src: LastActivityDate
+      default: ''
+      type: string
+    - name: PushCount
+      src: PushCount
+      default: ''
+      type: long
+    - name: LastStageChangeDate
+      src: LastStageChangeDate
+      default: ''
+      type: string
+    - name: FiscalQuarter
+      src: FiscalQuarter
+      default: ''
+      type: long
+    - name: FiscalYear
+      src: FiscalYear
+      default: ''
+      type: long
+    - name: Fiscal
+      src: Fiscal
+      default: ''
+      type: string
+    - name: ContactId
+      src: ContactId
+      default: ''
+      type: string
+    - name: LastViewedDate
+      src: LastViewedDate
+      default: ''
+      type: string
+    - name: LastReferencedDate
+      src: LastReferencedDate
+      default: ''
+      type: string
+    - name: HasOpenActivity
+      src: HasOpenActivity
+      default: ''
+      type: boolean
+    - name: HasOverdueTask
+      src: HasOverdueTask
+      default: ''
+      type: boolean
+    - name: LastAmountChangedHistoryId
+      src: LastAmountChangedHistoryId
+      default: ''
+      type: string
+    - name: LastCloseDateChangedHistoryId
+      src: LastCloseDateChangedHistoryId
+      default: ''
+      type: string
+    - name: primeNumber__DeliveryInstallationStatus__c
+      src: primeNumber__DeliveryInstallationStatus__c
+      default: ''
+      type: string
+    - name: primeNumber__TrackingNumber__c
+      src: primeNumber__TrackingNumber__c
+      default: ''
+      type: long
+    - name: primeNumber__OrderNumber__c
+      src: primeNumber__OrderNumber__c
+      default: ''
+      type: long
+    - name: primeNumber__CurrentGenerators__c
+      src: primeNumber__CurrentGenerators__c
+      default: ''
+      type: string
+    - name: primeNumber__MainCompetitors__c
+      src: primeNumber__MainCompetitors__c
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+triggers: []
+notifications: []

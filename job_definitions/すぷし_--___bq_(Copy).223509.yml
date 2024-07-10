@@ -1,0 +1,85 @@
+---
+id: 223509
+name: すぷし　-- > bq (Copy)
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 1290
+      name: MyGoogle
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1zJPEnwcnqXJ2vCQNafyEWhpXbNnQuySRAoS6l4YL9rI/edit?usp=drive_link
+    worksheet_title: シート2
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: id
+      type: long
+    - name: banzuke
+      type: string
+    - name: name
+      type: string
+    - name: email
+      type: string
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: nagaoka_test
+    table: spreadsheet_test
+    auto_create_dataset: false
+    mode: delete_in_advance
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options:
+    - name: banzuke
+      type: STRING
+      mode: NULLABLE
+      description: 番付
+    - name: name
+      type: STRING
+      mode: NULLABLE
+      description: 四股名
+    template_table: ''
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: banzuke
+      src: banzuke
+      default: ''
+      type: string
+    - name: name
+      src: name
+      default: ''
+      type: string
+    - name: email
+      src: email
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+triggers: []
+notifications: []

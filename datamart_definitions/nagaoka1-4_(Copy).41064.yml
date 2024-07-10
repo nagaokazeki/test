@@ -1,0 +1,44 @@
+---
+id: 41064
+name: nagaoka1-4 (Copy)
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: query
+  query: |-
+    delete from `systemn-playground.cs_onbording.onbording_output_20240417_nagaoka`
+    WHERE position ='係長';
+
+    INSERT INTO `systemn-playground.cs_onbording.onbording_output_20240417_nagaoka`
+    select
+    no2.id,
+    no2.name,
+    company_name,
+    position,
+    salary,
+    length_of_service,
+    address,
+    phone_number,
+    email,
+    birthday
+    from `systemn-playground.cs_onbording.dummyuser_20240417_nagaoka` as no3
+    INNER join `systemn-playground.cs_onbording.sf_account_20240417_nagaoka` as no2
+    on no3.company_name = no2.name
+    WHERE position ='係長';
+  custom_variables:
+  - type: timestamp_runtime
+    name: "$DATE$"
+    quantity: 0
+    unit: hour
+    direction: ago
+    time_zone: Etc/UTC
+    format: "%Y%m%d"
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+triggers: []
+notifications: []

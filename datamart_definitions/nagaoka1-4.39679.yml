@@ -1,0 +1,42 @@
+---
+id: 39679
+name: nagaoka1-4
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: insert
+  query: |-
+    select
+    no2.id,
+    no2.name,
+    company_name,
+    position,
+    salary,
+    length_of_service,
+    address,
+    phone_number,
+    email,
+    birthday
+    from `cs_onbording.dummyuser_$DATE$_nagaoka` as no3
+    INNER join `cs_onbording.sf_account_$DATE$_nagaoka` as no2
+    on no3.company_name = no2.name;
+  destination_dataset: cs_onbording
+  destination_table: onbording_output_$DATE$_nagaoka
+  write_disposition: truncate
+  custom_variables:
+  - type: timestamp_runtime
+    name: "$DATE$"
+    quantity: 0
+    unit: hour
+    direction: ago
+    time_zone: Etc/UTC
+    format: "%Y%m%d"
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+triggers: []
+notifications: []

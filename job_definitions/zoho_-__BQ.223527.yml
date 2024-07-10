@@ -1,0 +1,74 @@
+---
+id: 223527
+name: zoho -> BQ
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: zoho_crm
+    zoho_crm_connection:
+      id: 17
+      name: csdemo-Zoho CRM
+    query: |-
+      select
+       Owner,
+       Company,
+       Email,
+       Phone
+      from Leads
+      where Created_Time >= '2000-01-01T00:00:00+00:00'
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: nagaoka_test
+    table: zoho_test
+    auto_create_dataset: false
+    mode: append
+    location: US
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: Owner
+      src: Owner
+      default: ''
+      type: string
+    - name: Company
+      src: Company
+      default: ''
+      type: string
+    - name: id
+      src: id
+      default: ''
+      type: string
+    - name: Email
+      src: ''
+      default: ''
+      type: string
+    - name: Phone
+      src: ''
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+triggers: []
+notifications: []

@@ -1,0 +1,29 @@
+---
+id: 39749
+name: invalid def datamart(CSオンボ用) (nagaoka)
+description: "**右上の3点リーダーよりこの設定を複製してご利用ください**"
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: insert
+  query: |-
+    SELECT
+         inv.*,
+         v.name AS b_name
+    FROM `cs_onbording.invalid_record` inv
+    INNER JOIN `cs_onbording.valid` v
+    ON inv.name=v.name
+  destination_dataset: cs_onbording
+  destination_table: invalid_def_datamart
+  write_disposition: truncate
+  custom_variables: []
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+is_runnable_concurrently: false
+labels:
+- name: 検証利用
+  id: 1521
+job_schedules: []
+triggers: []
+notifications: []

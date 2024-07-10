@@ -1,0 +1,113 @@
+---
+id: 214748
+name: nagaoka1-3
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: mysql
+    mysql_connection:
+      id: 281
+      name: csdemo-CloudMySQL
+    database: test
+    query: select * from cs_onbording_dummyuser;
+    default_timezone: Asia/Tokyo
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 1800
+    use_legacy_datetime_code: false
+    custom_variables: []
+    incremental_loading_enabled: false
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: cs_onbording
+    table: dummyuser_$DATE$_nagaoka
+    auto_create_dataset: true
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables:
+    - type: timestamp_runtime
+      name: "$DATE$"
+      quantity: 0
+      unit: hour
+      direction: ago
+      time_zone: Asia/Tokyo
+      format: "%Y%m%d"
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: name
+      src: name
+      default: ''
+      type: string
+    - name: company_name
+      src: company_name
+      default: ''
+      type: string
+    - name: position
+      src: position
+      default: ''
+      type: string
+    - name: salary
+      src: salary
+      default: ''
+      type: long
+    - name: length_of_service
+      src: length_of_service
+      default: ''
+      type: long
+    - name: address
+      src: address
+      default: ''
+      type: string
+    - name: phone_number
+      src: phone_number
+      default: ''
+      type: string
+    - name: email
+      src: email
+      default: ''
+      type: string
+    - name: birthday
+      src: birthday
+      default: ''
+      type: timestamp
+      format: ''
+    masking:
+      columns:
+      - type: email
+        length: 5
+        name: email
+    string_replacement_columns:
+      target_columns:
+        phone_number:
+        - type: regexp_replace
+          pattern: "-"
+          to: ''
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+triggers: []
+notifications: []

@@ -1,0 +1,58 @@
+---
+id: 41231
+name: demo_Google BigQuery
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: query
+  query: |-
+    -- SELECT
+    --     d.id,
+    --     d.`name`,
+    --     d.`mail`,
+    --     m.`prefecture`
+    -- FROM
+    --     `systemn-playground.nagaoka_test.demo` d
+    --     left join
+    --         `systemn-playground.nagaoka_test.demo_from_master` m
+    --     on  d.`prefecture` = m.`id`
+    -- ;
+
+    DELETE
+    FROM
+        `systemn-playground.nagaoka_test.demo_mart`
+    WHERE
+        id = 1
+    ;
+    INSERT INTO `systemn-playground.nagaoka_test.demo_mart`
+    SELECT
+        d.id,
+        d.`name`,
+        d.`mail`,
+        m.`prefecture`
+    FROM
+        `systemn-playground.nagaoka_test.demo` d
+        left join
+            `systemn-playground.nagaoka_test.demo_from_master` m
+        on  d.`prefecture` = m.`id`
+    WHERE
+        id = 1
+  custom_variables:
+  - type: timestamp_runtime
+    name: "$DATE$"
+    quantity: 0
+    unit: date
+    direction: ago
+    time_zone: Asia/Tokyo
+    format: "%Y%m%d"
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+is_runnable_concurrently: false
+labels:
+- name: nagaoka
+  id: 3751
+job_schedules: []
+triggers: []
+notifications: []

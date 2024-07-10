@@ -1,0 +1,797 @@
+---
+id: 229792
+name: Salesforce_Opportunity -> BigQuery (Copy)
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: soql_file
+    salesforce_connection:
+      id: 240
+      name: csdemo-Salesforce[sandbox]
+    object: Opportunity
+    object_acquisition_method: all_columns
+    api_version: '54.0'
+    transfer_mode: type_interfence
+    include_deleted_or_archived_records: false
+    custom_variables: []
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: Id
+        type: string
+      - name: IsDeleted
+        type: boolean
+      - name: AccountId
+        type: string
+      - name: RecordTypeId
+        type: string
+      - name: Name
+        type: string
+      - name: Description
+        type: string
+      - name: StageName
+        type: string
+      - name: Amount
+        type: string
+      - name: Probability
+        type: double
+      - name: ExpectedRevenue
+        type: string
+      - name: CloseDate
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: Type
+        type: string
+      - name: NextStep
+        type: string
+      - name: LeadSource
+        type: string
+      - name: IsClosed
+        type: boolean
+      - name: IsWon
+        type: boolean
+      - name: ForecastCategory
+        type: string
+      - name: ForecastCategoryName
+        type: string
+      - name: CampaignId
+        type: string
+      - name: HasOpportunityLineItem
+        type: boolean
+      - name: Pricebook2Id
+        type: string
+      - name: OwnerId
+        type: string
+      - name: CreatedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: CreatedById
+        type: string
+      - name: LastModifiedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastModifiedById
+        type: string
+      - name: SystemModstamp
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastActivityDate
+        type: string
+      - name: PushCount
+        type: long
+      - name: LastStageChangeDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: FiscalQuarter
+        type: long
+      - name: FiscalYear
+        type: long
+      - name: Fiscal
+        type: string
+      - name: ContactId
+        type: string
+      - name: LastViewedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastReferencedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: SyncedQuoteId
+        type: string
+      - name: HasOpenActivity
+        type: boolean
+      - name: HasOverdueTask
+        type: boolean
+      - name: LastAmountChangedHistoryId
+        type: string
+      - name: LastCloseDateChangedHistoryId
+        type: string
+      - name: InquiryType__c
+        type: string
+      - name: Purpose__c
+        type: string
+      - name: FirstContactType_del__c
+        type: string
+      - name: HearingDetail__c
+        type: string
+      - name: IsFirstContacted__c
+        type: boolean
+      - name: IsTrialDone__c
+        type: boolean
+      - name: InquiryDate__c
+        type: string
+      - name: IsUpdated__c
+        type: boolean
+      - name: LostReason__c
+        type: string
+      - name: InquiryMemo_del__c
+        type: string
+      - name: Budget__c
+        type: string
+      - name: Author__c
+        type: string
+      - name: UsageTiming_del__c
+        type: string
+      - name: Needs__c
+        type: string
+      - name: OtherDescription_del__c
+        type: string
+      - name: CountOfContracted__c
+        type: double
+      - name: AmountIncludingTax__c
+        type: double
+      - name: IsTrialStage__c
+        type: boolean
+      - name: Competitor__c
+        type: string
+      - name: CompetitorScore__c
+        type: string
+      - name: IsCustomerUseCase__c
+        type: boolean
+      - name: IsAlliance__c
+        type: boolean
+      - name: ProjectStatus_del__c
+        type: string
+      - name: CompletedContractID__c
+        type: string
+      - name: LastModifiedDate__c
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: TrialEndedAt__c
+        type: string
+      - name: trialGole_del__c
+        type: string
+      - name: Connection_del__c
+        type: string
+      - name: Milestone__c
+        type: string
+      - name: FirstContactDate__c
+        type: string
+      - name: TechnologyVerificationContent__c
+        type: string
+      - name: TrialContents__c
+        type: string
+      - name: TrialStartedAt__c
+        type: string
+      - name: TrialEndScheduledDate__c
+        type: string
+      - name: BusinessPurpose__c
+        type: string
+      - name: FunctionAgreed__c
+        type: boolean
+      - name: ContractAgreed__c
+        type: boolean
+      - name: NextScheduleContactDate__c
+        type: string
+      - name: NextContactMethod__c
+        type: string
+      - name: CSStaff__c
+        type: string
+      - name: IsIncludedConsultingProposal__c
+        type: boolean
+      - name: ContractedAllianceID__c
+        type: string
+      - name: TrialCount__c
+        type: double
+      - name: ContractCount__c
+        type: double
+      - name: TrialAmount__c
+        type: double
+      - name: ContractAmount__c
+        type: double
+      - name: LostCount__c
+        type: double
+      - name: LostAmount__c
+        type: double
+      - name: IsCreatedForecast__c
+        type: boolean
+      - name: CreatedForecastMonth__c
+        type: string
+      - name: Budget_memo__c
+        type: string
+      - name: Field1__c
+        type: string
+      - name: DaysOfCompleted__c
+        type: double
+      - name: prospect__c
+        type: string
+      - name: IsToBeApproarched__c
+        type: boolean
+      - name: troccoTopics__c
+        type: boolean
+      - name: SeminarInformation__c
+        type: boolean
+      - name: CaseStudy__c
+        type: boolean
+      - name: LostReasenDetail__c
+        type: string
+      - name: LastStageAtLost__c
+        type: string
+      - name: SourcedLead__c
+        type: string
+      - name: Field3__c
+        type: string
+      - name: Field4__c
+        type: string
+      - name: LP_Blog_FB__c
+        type: string
+      - name: DaysFromInquiry__c
+        type: string
+      - name: Field5__c
+        type: string
+      - name: Field6__c
+        type: string
+      - name: Field7__c
+        type: string
+      - name: Field8__c
+        type: string
+      - name: Field9__c
+        type: string
+      - name: Field10__c
+        type: string
+      - name: NDA__c
+        type: boolean
+      - name: OriginLeadSource__c
+        type: string
+      - name: OriginLeadCategory__c
+        type: string
+      - name: IsOpps__c
+        type: double
+      - name: Priority_Lost__c
+        type: string
+      - name: TargetUsage__c
+        type: string
+      - name: approach_day__c
+        type: string
+      - name: next_action__c
+        type: string
+      - name: List_Administrator__c
+        type: string
+      - name: approach_result__c
+        type: string
+      - name: Last_lead__c
+        type: string
+      quote: "\""
+      escape: "\""
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: cs_demo_job_definitions
+    table: sf_opportunity_demo_data
+    auto_create_dataset: false
+    mode: replace
+    location: US
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: Id
+      src: Id
+      default: ''
+      type: string
+    - name: IsDeleted
+      src: IsDeleted
+      default: ''
+      type: boolean
+    - name: AccountId
+      src: AccountId
+      default: ''
+      type: string
+    - name: RecordTypeId
+      src: RecordTypeId
+      default: ''
+      type: string
+    - name: Name
+      src: Name
+      default: ''
+      type: string
+    - name: StageName
+      src: StageName
+      default: ''
+      type: string
+    - name: Amount
+      src: Amount
+      default: ''
+      type: string
+    - name: CloseDate
+      src: CloseDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: IsClosed
+      src: IsClosed
+      default: ''
+      type: boolean
+    - name: IsWon
+      src: IsWon
+      default: ''
+      type: boolean
+    - name: ForecastCategory
+      src: ForecastCategory
+      default: ''
+      type: string
+    - name: ForecastCategoryName
+      src: ForecastCategoryName
+      default: ''
+      type: string
+    - name: HasOpportunityLineItem
+      src: HasOpportunityLineItem
+      default: ''
+      type: boolean
+    - name: Pricebook2Id
+      src: Pricebook2Id
+      default: ''
+      type: string
+    - name: OwnerId
+      src: OwnerId
+      default: ''
+      type: string
+    - name: CreatedDate
+      src: CreatedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: CreatedById
+      src: CreatedById
+      default: ''
+      type: string
+    - name: LastModifiedDate
+      src: LastModifiedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastModifiedById
+      src: LastModifiedById
+      default: ''
+      type: string
+    - name: SystemModstamp
+      src: SystemModstamp
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastActivityDate
+      src: LastActivityDate
+      default: ''
+      type: string
+    - name: PushCount
+      src: PushCount
+      default: ''
+      type: long
+    - name: LastStageChangeDate
+      src: LastStageChangeDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: FiscalQuarter
+      src: FiscalQuarter
+      default: ''
+      type: long
+    - name: FiscalYear
+      src: FiscalYear
+      default: ''
+      type: long
+    - name: Fiscal
+      src: Fiscal
+      default: ''
+      type: string
+    - name: ContactId
+      src: ContactId
+      default: ''
+      type: string
+    - name: LastViewedDate
+      src: LastViewedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastReferencedDate
+      src: LastReferencedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: SyncedQuoteId
+      src: SyncedQuoteId
+      default: ''
+      type: string
+    - name: HasOpenActivity
+      src: HasOpenActivity
+      default: ''
+      type: boolean
+    - name: HasOverdueTask
+      src: HasOverdueTask
+      default: ''
+      type: boolean
+    - name: LastAmountChangedHistoryId
+      src: LastAmountChangedHistoryId
+      default: ''
+      type: string
+    - name: LastCloseDateChangedHistoryId
+      src: LastCloseDateChangedHistoryId
+      default: ''
+      type: string
+    - name: InquiryType__c
+      src: InquiryType__c
+      default: ''
+      type: string
+    - name: Purpose__c
+      src: Purpose__c
+      default: ''
+      type: string
+    - name: FirstContactType_del__c
+      src: FirstContactType_del__c
+      default: ''
+      type: string
+    - name: HearingDetail__c
+      src: HearingDetail__c
+      default: ''
+      type: string
+    - name: IsFirstContacted__c
+      src: IsFirstContacted__c
+      default: ''
+      type: boolean
+    - name: IsTrialDone__c
+      src: IsTrialDone__c
+      default: ''
+      type: boolean
+    - name: InquiryDate__c
+      src: InquiryDate__c
+      default: ''
+      type: string
+    - name: IsUpdated__c
+      src: IsUpdated__c
+      default: ''
+      type: boolean
+    - name: LostReason__c
+      src: LostReason__c
+      default: ''
+      type: string
+    - name: InquiryMemo_del__c
+      src: InquiryMemo_del__c
+      default: ''
+      type: string
+    - name: Budget__c
+      src: Budget__c
+      default: ''
+      type: string
+    - name: Author__c
+      src: Author__c
+      default: ''
+      type: string
+    - name: UsageTiming_del__c
+      src: UsageTiming_del__c
+      default: ''
+      type: string
+    - name: Needs__c
+      src: Needs__c
+      default: ''
+      type: string
+    - name: OtherDescription_del__c
+      src: OtherDescription_del__c
+      default: ''
+      type: string
+    - name: CountOfContracted__c
+      src: CountOfContracted__c
+      default: ''
+      type: double
+    - name: AmountIncludingTax__c
+      src: AmountIncludingTax__c
+      default: ''
+      type: double
+    - name: IsTrialStage__c
+      src: IsTrialStage__c
+      default: ''
+      type: boolean
+    - name: Competitor__c
+      src: Competitor__c
+      default: ''
+      type: string
+    - name: CompetitorScore__c
+      src: CompetitorScore__c
+      default: ''
+      type: string
+    - name: IsCustomerUseCase__c
+      src: IsCustomerUseCase__c
+      default: ''
+      type: boolean
+    - name: IsAlliance__c
+      src: IsAlliance__c
+      default: ''
+      type: boolean
+    - name: ProjectStatus_del__c
+      src: ProjectStatus_del__c
+      default: ''
+      type: string
+    - name: CompletedContractID__c
+      src: CompletedContractID__c
+      default: ''
+      type: string
+    - name: LastModifiedDate__c
+      src: LastModifiedDate__c
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: TrialEndedAt__c
+      src: TrialEndedAt__c
+      default: ''
+      type: string
+    - name: trialGole_del__c
+      src: trialGole_del__c
+      default: ''
+      type: string
+    - name: Connection_del__c
+      src: Connection_del__c
+      default: ''
+      type: string
+    - name: Milestone__c
+      src: Milestone__c
+      default: ''
+      type: string
+    - name: FirstContactDate__c
+      src: FirstContactDate__c
+      default: ''
+      type: string
+    - name: TechnologyVerificationContent__c
+      src: TechnologyVerificationContent__c
+      default: ''
+      type: string
+    - name: TrialContents__c
+      src: TrialContents__c
+      default: ''
+      type: string
+    - name: TrialStartedAt__c
+      src: TrialStartedAt__c
+      default: ''
+      type: string
+    - name: TrialEndScheduledDate__c
+      src: TrialEndScheduledDate__c
+      default: ''
+      type: string
+    - name: BusinessPurpose__c
+      src: BusinessPurpose__c
+      default: ''
+      type: string
+    - name: FunctionAgreed__c
+      src: FunctionAgreed__c
+      default: ''
+      type: boolean
+    - name: ContractAgreed__c
+      src: ContractAgreed__c
+      default: ''
+      type: boolean
+    - name: NextScheduleContactDate__c
+      src: NextScheduleContactDate__c
+      default: ''
+      type: string
+    - name: NextContactMethod__c
+      src: NextContactMethod__c
+      default: ''
+      type: string
+    - name: CSStaff__c
+      src: CSStaff__c
+      default: ''
+      type: string
+    - name: IsIncludedConsultingProposal__c
+      src: IsIncludedConsultingProposal__c
+      default: ''
+      type: boolean
+    - name: ContractedAllianceID__c
+      src: ContractedAllianceID__c
+      default: ''
+      type: string
+    - name: TrialCount__c
+      src: TrialCount__c
+      default: ''
+      type: double
+    - name: ContractCount__c
+      src: ContractCount__c
+      default: ''
+      type: double
+    - name: TrialAmount__c
+      src: TrialAmount__c
+      default: ''
+      type: double
+    - name: ContractAmount__c
+      src: ContractAmount__c
+      default: ''
+      type: double
+    - name: LostCount__c
+      src: LostCount__c
+      default: ''
+      type: double
+    - name: LostAmount__c
+      src: LostAmount__c
+      default: ''
+      type: double
+    - name: IsCreatedForecast__c
+      src: IsCreatedForecast__c
+      default: ''
+      type: boolean
+    - name: CreatedForecastMonth__c
+      src: CreatedForecastMonth__c
+      default: ''
+      type: string
+    - name: Budget_memo__c
+      src: Budget_memo__c
+      default: ''
+      type: string
+    - name: Field1__c
+      src: Field1__c
+      default: ''
+      type: string
+    - name: DaysOfCompleted__c
+      src: DaysOfCompleted__c
+      default: ''
+      type: double
+    - name: prospect__c
+      src: prospect__c
+      default: ''
+      type: string
+    - name: IsToBeApproarched__c
+      src: IsToBeApproarched__c
+      default: ''
+      type: boolean
+    - name: troccoTopics__c
+      src: troccoTopics__c
+      default: ''
+      type: boolean
+    - name: SeminarInformation__c
+      src: SeminarInformation__c
+      default: ''
+      type: boolean
+    - name: CaseStudy__c
+      src: CaseStudy__c
+      default: ''
+      type: boolean
+    - name: LostReasenDetail__c
+      src: LostReasenDetail__c
+      default: ''
+      type: string
+    - name: LastStageAtLost__c
+      src: LastStageAtLost__c
+      default: ''
+      type: string
+    - name: SourcedLead__c
+      src: SourcedLead__c
+      default: ''
+      type: string
+    - name: Field3__c
+      src: Field3__c
+      default: ''
+      type: string
+    - name: Field4__c
+      src: Field4__c
+      default: ''
+      type: string
+    - name: LP_Blog_FB__c
+      src: LP_Blog_FB__c
+      default: ''
+      type: string
+    - name: DaysFromInquiry__c
+      src: DaysFromInquiry__c
+      default: ''
+      type: string
+    - name: Field5__c
+      src: Field5__c
+      default: ''
+      type: string
+    - name: Field6__c
+      src: Field6__c
+      default: ''
+      type: string
+    - name: Field7__c
+      src: Field7__c
+      default: ''
+      type: string
+    - name: Field8__c
+      src: Field8__c
+      default: ''
+      type: string
+    - name: Field9__c
+      src: Field9__c
+      default: ''
+      type: string
+    - name: Field10__c
+      src: Field10__c
+      default: ''
+      type: string
+    - name: NDA__c
+      src: NDA__c
+      default: ''
+      type: boolean
+    - name: OriginLeadSource__c
+      src: OriginLeadSource__c
+      default: ''
+      type: string
+    - name: OriginLeadCategory__c
+      src: OriginLeadCategory__c
+      default: ''
+      type: string
+    - name: IsOpps__c
+      src: IsOpps__c
+      default: ''
+      type: double
+    - name: Priority_Lost__c
+      src: Priority_Lost__c
+      default: ''
+      type: string
+    - name: TargetUsage__c
+      src: TargetUsage__c
+      default: ''
+      type: string
+    - name: approach_day__c
+      src: approach_day__c
+      default: ''
+      type: string
+    - name: next_action__c
+      src: next_action__c
+      default: ''
+      type: string
+    - name: List_Administrator__c
+      src: List_Administrator__c
+      default: ''
+      type: string
+    - name: approach_result__c
+      src: approach_result__c
+      default: ''
+      type: string
+    - name: Last_lead__c
+      src: Last_lead__c
+      default: ''
+      type: string
+    encryption_columns:
+      columns:
+      - name: Name
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+triggers: []
+notifications: []

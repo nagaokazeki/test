@@ -1,0 +1,569 @@
+---
+id: 214740
+name: nagaoka1-2
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: soql_file
+    salesforce_connection:
+      id: 240
+      name: csdemo-Salesforce[sandbox]
+    object: Account
+    object_acquisition_method: all_columns
+    api_version: '54.0'
+    transfer_mode: type_interfence
+    include_deleted_or_archived_records: false
+    custom_variables: []
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: Id
+        type: string
+      - name: IsDeleted
+        type: boolean
+      - name: MasterRecordId
+        type: string
+      - name: Name
+        type: string
+      - name: Type
+        type: string
+      - name: ParentId
+        type: string
+      - name: BillingStreet
+        type: string
+      - name: BillingCity
+        type: string
+      - name: BillingState
+        type: string
+      - name: BillingPostalCode
+        type: string
+      - name: BillingCountry
+        type: string
+      - name: BillingLatitude
+        type: string
+      - name: BillingLongitude
+        type: string
+      - name: BillingGeocodeAccuracy
+        type: string
+      - name: ShippingStreet
+        type: string
+      - name: ShippingCity
+        type: string
+      - name: ShippingState
+        type: string
+      - name: ShippingPostalCode
+        type: string
+      - name: ShippingCountry
+        type: string
+      - name: ShippingLatitude
+        type: string
+      - name: ShippingLongitude
+        type: string
+      - name: ShippingGeocodeAccuracy
+        type: string
+      - name: Phone
+        type: string
+      - name: Fax
+        type: string
+      - name: Website
+        type: string
+      - name: PhotoUrl
+        type: string
+      - name: Industry
+        type: string
+      - name: AnnualRevenue
+        type: string
+      - name: NumberOfEmployees
+        type: string
+      - name: Description
+        type: string
+      - name: OwnerId
+        type: string
+      - name: CreatedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: CreatedById
+        type: string
+      - name: LastModifiedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastModifiedById
+        type: string
+      - name: SystemModstamp
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastActivityDate
+        type: string
+      - name: LastViewedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastReferencedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: IsCustomerPortal
+        type: boolean
+      - name: Jigsaw
+        type: string
+      - name: JigsawCompanyId
+        type: string
+      - name: AccountSource
+        type: string
+      - name: SicDesc
+        type: string
+      - name: Comment__c
+        type: string
+      - name: FirstAppointment__c
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: InquiryBackground__c
+        type: string
+      - name: CompanySize__c
+        type: string
+      - name: LastFundProcurementAmount__c
+        type: string
+      - name: LastFundProcurementDate__c
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: AccountToBeGrown__c
+        type: boolean
+      - name: AccountToIncleaseRevenue__c
+        type: boolean
+      - name: SupportedAmount__c
+        type: string
+      - name: CommunicationTool__c
+        type: string
+      - name: TicketManagementTool__c
+        type: boolean
+      - name: NumberOfOperationPeople__c
+        type: string
+      - name: IsIntroducedProgram__c
+        type: boolean
+      - name: IsConsulted__c
+        type: boolean
+      - name: NumberOfBugs__c
+        type: string
+      - name: NumberOfFeatureRequest__c
+        type: string
+      - name: NumberOfTransferredJobs__c
+        type: string
+      - name: NumberOfDataMartJobs__c
+        type: string
+      - name: NumberOfTransferredDefinitions__c
+        type: string
+      - name: NumberOfDataMartDefinition__c
+        type: string
+      - name: IsInterviewCompleted__c
+        type: boolean
+      - name: TopRelationShip__c
+        type: string
+      - name: PICRelationship__c
+        type: string
+      - name: IsLogoPublishedOnWebPage__c
+        type: boolean
+      - name: IsCaseRegistered__c
+        type: boolean
+      - name: CapitalStock__c
+        type: double
+      - name: MaturityAssesment__c
+        type: string
+      - name: HP__c
+        type: string
+      - name: Field1__c
+        type: string
+      - name: Field2__c
+        type: string
+      - name: Closingmonth__c
+        type: string
+      - name: Industry_big__c
+        type: string
+      - name: Industry_new__c
+        type: string
+      - name: application__c
+        type: string
+      - name: Tech_company__c
+        type: string
+      - name: business_category__c
+        type: string
+      quote: "\""
+      escape: "\""
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: cs_onbording
+    table: sf_account_$DATE$_nagaoka
+    auto_create_dataset: true
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables:
+    - type: timestamp_runtime
+      name: "$DATE$"
+      quantity: 0
+      unit: hour
+      direction: ago
+      time_zone: Asia/Tokyo
+      format: "%Y%m%d"
+  data_settings:
+    columns:
+    - name: Id
+      src: Id
+      default: ''
+      type: string
+    - name: IsDeleted
+      src: IsDeleted
+      default: ''
+      type: boolean
+    - name: MasterRecordId
+      src: MasterRecordId
+      default: ''
+      type: string
+    - name: Name
+      src: Name
+      default: ''
+      type: string
+    - name: Type
+      src: Type
+      default: ''
+      type: string
+    - name: ParentId
+      src: ParentId
+      default: ''
+      type: string
+    - name: BillingStreet
+      src: BillingStreet
+      default: ''
+      type: string
+    - name: BillingCity
+      src: BillingCity
+      default: ''
+      type: string
+    - name: BillingState
+      src: BillingState
+      default: ''
+      type: string
+    - name: BillingPostalCode
+      src: BillingPostalCode
+      default: ''
+      type: string
+    - name: BillingCountry
+      src: BillingCountry
+      default: ''
+      type: string
+    - name: BillingLatitude
+      src: BillingLatitude
+      default: ''
+      type: string
+    - name: BillingLongitude
+      src: BillingLongitude
+      default: ''
+      type: string
+    - name: BillingGeocodeAccuracy
+      src: BillingGeocodeAccuracy
+      default: ''
+      type: string
+    - name: ShippingStreet
+      src: ShippingStreet
+      default: ''
+      type: string
+    - name: ShippingCity
+      src: ShippingCity
+      default: ''
+      type: string
+    - name: ShippingState
+      src: ShippingState
+      default: ''
+      type: string
+    - name: ShippingPostalCode
+      src: ShippingPostalCode
+      default: ''
+      type: string
+    - name: ShippingCountry
+      src: ShippingCountry
+      default: ''
+      type: string
+    - name: ShippingLatitude
+      src: ShippingLatitude
+      default: ''
+      type: string
+    - name: ShippingLongitude
+      src: ShippingLongitude
+      default: ''
+      type: string
+    - name: ShippingGeocodeAccuracy
+      src: ShippingGeocodeAccuracy
+      default: ''
+      type: string
+    - name: Phone
+      src: Phone
+      default: ''
+      type: string
+    - name: Fax
+      src: Fax
+      default: ''
+      type: string
+    - name: Website
+      src: Website
+      default: ''
+      type: string
+    - name: PhotoUrl
+      src: PhotoUrl
+      default: ''
+      type: string
+    - name: Industry
+      src: Industry
+      default: ''
+      type: string
+    - name: AnnualRevenue
+      src: AnnualRevenue
+      default: ''
+      type: string
+    - name: NumberOfEmployees
+      src: NumberOfEmployees
+      default: ''
+      type: string
+    - name: Description
+      src: Description
+      default: ''
+      type: string
+    - name: OwnerId
+      src: OwnerId
+      default: ''
+      type: string
+    - name: CreatedDate
+      src: CreatedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: CreatedById
+      src: CreatedById
+      default: ''
+      type: string
+    - name: LastModifiedDate
+      src: LastModifiedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastModifiedById
+      src: LastModifiedById
+      default: ''
+      type: string
+    - name: SystemModstamp
+      src: SystemModstamp
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastActivityDate
+      src: LastActivityDate
+      default: ''
+      type: string
+    - name: LastViewedDate
+      src: LastViewedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastReferencedDate
+      src: LastReferencedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: IsCustomerPortal
+      src: IsCustomerPortal
+      default: ''
+      type: boolean
+    - name: Jigsaw
+      src: Jigsaw
+      default: ''
+      type: string
+    - name: JigsawCompanyId
+      src: JigsawCompanyId
+      default: ''
+      type: string
+    - name: AccountSource
+      src: AccountSource
+      default: ''
+      type: string
+    - name: SicDesc
+      src: SicDesc
+      default: ''
+      type: string
+    - name: Comment__c
+      src: Comment__c
+      default: ''
+      type: string
+    - name: FirstAppointment__c
+      src: FirstAppointment__c
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: InquiryBackground__c
+      src: InquiryBackground__c
+      default: ''
+      type: string
+    - name: CompanySize__c
+      src: CompanySize__c
+      default: ''
+      type: string
+    - name: LastFundProcurementAmount__c
+      src: LastFundProcurementAmount__c
+      default: ''
+      type: string
+    - name: LastFundProcurementDate__c
+      src: LastFundProcurementDate__c
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: AccountToBeGrown__c
+      src: AccountToBeGrown__c
+      default: ''
+      type: boolean
+    - name: AccountToIncleaseRevenue__c
+      src: AccountToIncleaseRevenue__c
+      default: ''
+      type: boolean
+    - name: SupportedAmount__c
+      src: SupportedAmount__c
+      default: ''
+      type: string
+    - name: CommunicationTool__c
+      src: CommunicationTool__c
+      default: ''
+      type: string
+    - name: TicketManagementTool__c
+      src: TicketManagementTool__c
+      default: ''
+      type: boolean
+    - name: NumberOfOperationPeople__c
+      src: NumberOfOperationPeople__c
+      default: ''
+      type: string
+    - name: IsIntroducedProgram__c
+      src: IsIntroducedProgram__c
+      default: ''
+      type: boolean
+    - name: IsConsulted__c
+      src: IsConsulted__c
+      default: ''
+      type: boolean
+    - name: NumberOfBugs__c
+      src: NumberOfBugs__c
+      default: ''
+      type: string
+    - name: NumberOfFeatureRequest__c
+      src: NumberOfFeatureRequest__c
+      default: ''
+      type: string
+    - name: NumberOfTransferredJobs__c
+      src: NumberOfTransferredJobs__c
+      default: ''
+      type: string
+    - name: NumberOfDataMartJobs__c
+      src: NumberOfDataMartJobs__c
+      default: ''
+      type: string
+    - name: NumberOfTransferredDefinitions__c
+      src: NumberOfTransferredDefinitions__c
+      default: ''
+      type: string
+    - name: NumberOfDataMartDefinition__c
+      src: NumberOfDataMartDefinition__c
+      default: ''
+      type: string
+    - name: IsInterviewCompleted__c
+      src: IsInterviewCompleted__c
+      default: ''
+      type: boolean
+    - name: TopRelationShip__c
+      src: TopRelationShip__c
+      default: ''
+      type: string
+    - name: PICRelationship__c
+      src: PICRelationship__c
+      default: ''
+      type: string
+    - name: IsLogoPublishedOnWebPage__c
+      src: IsLogoPublishedOnWebPage__c
+      default: ''
+      type: boolean
+    - name: IsCaseRegistered__c
+      src: IsCaseRegistered__c
+      default: ''
+      type: boolean
+    - name: CapitalStock__c
+      src: CapitalStock__c
+      default: ''
+      type: double
+    - name: MaturityAssesment__c
+      src: MaturityAssesment__c
+      default: ''
+      type: string
+    - name: HP__c
+      src: HP__c
+      default: ''
+      type: string
+    - name: Field1__c
+      src: Field1__c
+      default: ''
+      type: string
+    - name: Field2__c
+      src: Field2__c
+      default: ''
+      type: string
+    - name: Closingmonth__c
+      src: Closingmonth__c
+      default: ''
+      type: string
+    - name: Industry_big__c
+      src: Industry_big__c
+      default: ''
+      type: string
+    - name: Industry_new__c
+      src: Industry_new__c
+      default: ''
+      type: string
+    - name: application__c
+      src: application__c
+      default: ''
+      type: string
+    - name: Tech_company__c
+      src: Tech_company__c
+      default: ''
+      type: string
+    - name: business_category__c
+      src: business_category__c
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+triggers: []
+notifications: []

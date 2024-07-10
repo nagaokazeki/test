@@ -1,0 +1,79 @@
+---
+id: 241643
+name: mysql_nagaoka_test_demo_customer
+description: 
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: mysql
+    mysql_connection:
+      id: 281
+      name: csdemo-CloudMySQL
+    database: test
+    query: |-
+      SELECT *
+      FROM `demo_customer`
+    default_timezone: Asia/Tokyo
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 1800
+    use_legacy_datetime_code: false
+    custom_variables: []
+    incremental_loading_enabled: false
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: nagaoka_test
+    table: demo_customer
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: 
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: 
+      type: long
+    - name: name
+      src: name
+      default: 
+      type: string
+    - name: mail
+      src: mail
+      default: 
+      type: string
+    - name: birthday
+      src: birthday
+      default: 
+      type: timestamp
+      format: 
+    - name: rank
+      src: rank
+      default: 
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels:
+- name: nagaoka
+  id: 3751
+job_schedules: []
+triggers: []
+notifications: []

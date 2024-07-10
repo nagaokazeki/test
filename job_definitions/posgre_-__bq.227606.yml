@@ -1,0 +1,67 @@
+---
+id: 227606
+name: posgre -> bq
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: postgresql
+    postgresql_connection:
+      id: 81
+      name: csdemo-PostgreSQL
+    schema: public
+    database: postgres
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 1800
+    default_timezone: UTC
+    column_options: 
+    query: SELECT * FROM nagaoka_test
+    custom_variables: []
+    incremental_loading_enabled: false
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: nagaoka_test
+    table: posgre_test
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: name
+      src: name
+      default: ''
+      type: string
+    - name: belong
+      src: belong
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+triggers: []
+notifications: []

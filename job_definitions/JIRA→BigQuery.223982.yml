@@ -1,0 +1,502 @@
+---
+id: 223982
+name: JIRA→BigQuery
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: jira
+    jira_connection:
+      id: 8
+      name: csdemo-JIRA
+    jql: project = fujita-test
+    expand: []
+    retry_initial_wait_sec: 1
+    retry_limit: 5
+    max_results: 50
+    columns:
+    - name: aggregateprogress
+      type: json
+    - name: aggregatetimeestimate
+      type: string
+    - name: aggregatetimeoriginalestimate
+      type: string
+    - name: aggregatetimespent
+      type: string
+    - name: assignee
+      type: string
+    - name: attachment
+      type: json
+    - name: comment
+      type: json
+    - name: components
+      type: json
+    - name: created
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: creator
+      type: json
+    - name: customfield_10001
+      type: string
+    - name: customfield_10002
+      type: string
+    - name: customfield_10003
+      type: string
+    - name: customfield_10004
+      type: string
+    - name: customfield_10005
+      type: string
+    - name: customfield_10006
+      type: string
+    - name: customfield_10007
+      type: string
+    - name: customfield_10008
+      type: string
+    - name: customfield_10009
+      type: string
+    - name: customfield_10010
+      type: string
+    - name: customfield_10014
+      type: string
+    - name: customfield_10015
+      type: string
+    - name: customfield_10016
+      type: string
+    - name: customfield_10017
+      type: string
+    - name: customfield_10018
+      type: json
+    - name: customfield_10019
+      type: string
+    - name: customfield_10020
+      type: string
+    - name: customfield_10021
+      type: string
+    - name: customfield_10022
+      type: string
+    - name: customfield_10023
+      type: string
+    - name: customfield_10024
+      type: string
+    - name: customfield_10025
+      type: string
+    - name: customfield_10029
+      type: string
+    - name: customfield_10030
+      type: string
+    - name: customfield_10031
+      type: string
+    - name: customfield_10032
+      type: string
+    - name: customfield_10034
+      type: string
+    - name: customfield_10035
+      type: string
+    - name: customfield_10036
+      type: string
+    - name: customfield_10037
+      type: string
+    - name: description
+      type: string
+    - name: duedate
+      type: string
+    - name: environment
+      type: string
+    - name: expand
+      type: string
+    - name: fixVersions
+      type: json
+    - name: id
+      type: long
+    - name: issuelinks
+      type: json
+    - name: issuerestriction
+      type: json
+    - name: issuetype
+      type: json
+    - name: key
+      type: string
+    - name: labels
+      type: json
+    - name: lastViewed
+      type: string
+    - name: priority
+      type: json
+    - name: progress
+      type: json
+    - name: project
+      type: json
+    - name: reporter
+      type: json
+    - name: resolution
+      type: string
+    - name: resolutiondate
+      type: string
+    - name: security
+      type: string
+    - name: self
+      type: string
+    - name: status
+      type: json
+    - name: statuscategorychangedate
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: subtasks
+      type: json
+    - name: summary
+      type: string
+    - name: timeestimate
+      type: string
+    - name: timeoriginalestimate
+      type: string
+    - name: timespent
+      type: string
+    - name: timetracking
+      type: json
+    - name: updated
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: versions
+      type: json
+    - name: votes
+      type: json
+    - name: watches
+      type: json
+    - name: worklog
+      type: json
+    - name: workratio
+      type: long
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: nagaoka_test
+    table: JIRA_test3
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: aggregateprogress
+      src: aggregateprogress
+      default: ''
+      type: json
+    - name: aggregatetimeestimate
+      src: aggregatetimeestimate
+      default: ''
+      type: string
+    - name: aggregatetimeoriginalestimate
+      src: aggregatetimeoriginalestimate
+      default: ''
+      type: string
+    - name: aggregatetimespent
+      src: aggregatetimespent
+      default: ''
+      type: string
+    - name: assignee
+      src: assignee
+      default: ''
+      type: string
+    - name: attachment
+      src: attachment
+      default: ''
+      type: json
+    - name: comment
+      src: comment
+      default: ''
+      type: json
+    - name: components
+      src: components
+      default: ''
+      type: json
+    - name: created
+      src: created
+      default: ''
+      type: timestamp
+      format: ''
+    - name: creator
+      src: creator
+      default: ''
+      type: json
+    - name: customfield_10001
+      src: customfield_10001
+      default: ''
+      type: string
+    - name: customfield_10002
+      src: customfield_10002
+      default: ''
+      type: string
+    - name: customfield_10003
+      src: customfield_10003
+      default: ''
+      type: string
+    - name: customfield_10004
+      src: customfield_10004
+      default: ''
+      type: string
+    - name: customfield_10005
+      src: customfield_10005
+      default: ''
+      type: string
+    - name: customfield_10006
+      src: customfield_10006
+      default: ''
+      type: string
+    - name: customfield_10007
+      src: customfield_10007
+      default: ''
+      type: string
+    - name: customfield_10008
+      src: customfield_10008
+      default: ''
+      type: string
+    - name: customfield_10009
+      src: customfield_10009
+      default: ''
+      type: string
+    - name: customfield_10010
+      src: customfield_10010
+      default: ''
+      type: string
+    - name: customfield_10014
+      src: customfield_10014
+      default: ''
+      type: string
+    - name: customfield_10015
+      src: customfield_10015
+      default: ''
+      type: string
+    - name: customfield_10016
+      src: customfield_10016
+      default: ''
+      type: string
+    - name: customfield_10017
+      src: customfield_10017
+      default: ''
+      type: string
+    - name: customfield_10018
+      src: customfield_10018
+      default: ''
+      type: json
+    - name: customfield_10019
+      src: customfield_10019
+      default: ''
+      type: string
+    - name: customfield_10020
+      src: customfield_10020
+      default: ''
+      type: string
+    - name: customfield_10021
+      src: customfield_10021
+      default: ''
+      type: string
+    - name: customfield_10022
+      src: customfield_10022
+      default: ''
+      type: string
+    - name: customfield_10023
+      src: customfield_10023
+      default: ''
+      type: string
+    - name: customfield_10024
+      src: customfield_10024
+      default: ''
+      type: string
+    - name: customfield_10025
+      src: customfield_10025
+      default: ''
+      type: string
+    - name: customfield_10029
+      src: customfield_10029
+      default: ''
+      type: string
+    - name: customfield_10030
+      src: customfield_10030
+      default: ''
+      type: string
+    - name: customfield_10031
+      src: customfield_10031
+      default: ''
+      type: string
+    - name: customfield_10032
+      src: customfield_10032
+      default: ''
+      type: string
+    - name: customfield_10034
+      src: customfield_10034
+      default: ''
+      type: string
+    - name: customfield_10035
+      src: customfield_10035
+      default: ''
+      type: string
+    - name: customfield_10036
+      src: customfield_10036
+      default: ''
+      type: string
+    - name: customfield_10037
+      src: customfield_10037
+      default: ''
+      type: string
+    - name: description
+      src: description
+      default: ''
+      type: string
+    - name: duedate
+      src: duedate
+      default: ''
+      type: string
+    - name: environment
+      src: environment
+      default: ''
+      type: string
+    - name: expand
+      src: expand
+      default: ''
+      type: string
+    - name: fixVersions
+      src: fixVersions
+      default: ''
+      type: json
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: issuelinks
+      src: issuelinks
+      default: ''
+      type: json
+    - name: issuerestriction
+      src: issuerestriction
+      default: ''
+      type: json
+    - name: issuetype
+      src: issuetype
+      default: ''
+      type: json
+    - name: key
+      src: key
+      default: ''
+      type: string
+    - name: labels
+      src: labels
+      default: ''
+      type: json
+    - name: lastViewed
+      src: lastViewed
+      default: ''
+      type: string
+    - name: priority
+      src: priority
+      default: ''
+      type: json
+    - name: progress
+      src: progress
+      default: ''
+      type: json
+    - name: project
+      src: project
+      default: ''
+      type: json
+    - name: reporter
+      src: reporter
+      default: ''
+      type: json
+    - name: resolution
+      src: resolution
+      default: ''
+      type: string
+    - name: resolutiondate
+      src: resolutiondate
+      default: ''
+      type: string
+    - name: security
+      src: security
+      default: ''
+      type: string
+    - name: self
+      src: self
+      default: ''
+      type: string
+    - name: status
+      src: status
+      default: ''
+      type: json
+    - name: statuscategorychangedate
+      src: statuscategorychangedate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: subtasks
+      src: subtasks
+      default: ''
+      type: json
+    - name: summary
+      src: summary
+      default: ''
+      type: string
+    - name: timeestimate
+      src: timeestimate
+      default: ''
+      type: string
+    - name: timeoriginalestimate
+      src: timeoriginalestimate
+      default: ''
+      type: string
+    - name: timespent
+      src: timespent
+      default: ''
+      type: string
+    - name: timetracking
+      src: timetracking
+      default: ''
+      type: json
+    - name: updated
+      src: updated
+      default: ''
+      type: timestamp
+      format: ''
+    - name: versions
+      src: versions
+      default: ''
+      type: json
+    - name: votes
+      src: votes
+      default: ''
+      type: json
+    - name: watches
+      src: watches
+      default: ''
+      type: json
+    - name: worklog
+      src: worklog
+      default: ''
+      type: json
+    - name: workratio
+      src: workratio
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+triggers: []
+notifications: []
