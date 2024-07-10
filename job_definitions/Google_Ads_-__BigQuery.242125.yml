@@ -1,0 +1,170 @@
+---
+id: 242125
+name: Google Ads -> BigQuery
+description: ''
+user:
+  id: 7286
+  email: toru.nagaoka@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_ads
+    google_ads_connection:
+      id: 124
+      name: csdemo-GoogleAds
+    customer_id: '6797712831'
+    resource_type: customer
+    daterange:
+      start_date: "$start_date$"
+      end_date: "$end_date$"
+    fields:
+    - name: customer.id
+      type: long
+    - name: segments.ad_network_type
+      type: string
+    - name: segments.date
+      type: string
+    - name: segments.device
+      type: string
+    - name: metrics.active_view_impressions
+      type: long
+    - name: metrics.active_view_measurability
+      type: double
+    - name: metrics.active_view_measurable_cost_micros
+      type: long
+    - name: metrics.active_view_measurable_impressions
+      type: long
+    - name: metrics.active_view_viewability
+      type: double
+    - name: metrics.clicks
+      type: long
+    - name: metrics.conversions
+      type: double
+    - name: metrics.conversions_value
+      type: double
+    - name: metrics.cost_micros
+      type: long
+    - name: metrics.impressions
+      type: long
+    - name: metrics.interaction_event_types
+      type: json
+    - name: metrics.interactions
+      type: long
+    - name: metrics.view_through_conversions
+      type: long
+    conditions: []
+    limit: 
+    custom_variables:
+    - type: timestamp_runtime
+      name: "$start_date$"
+      quantity: 7
+      unit: date
+      direction: ago
+      time_zone: Asia/Tokyo
+      format: "%Y%m%d"
+    - type: timestamp_runtime
+      name: "$end_date$"
+      quantity: 1
+      unit: date
+      direction: ago
+      time_zone: Asia/Tokyo
+      format: "%Y%m%d"
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: nagaoka_test
+    table: googleads_test
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type: 
+      field: 
+      expiration_ms: 
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: customer_id
+      src: customer_id
+      default: ''
+      type: long
+    - name: segments_ad_network_type
+      src: segments_ad_network_type
+      default: ''
+      type: string
+    - name: segments_date
+      src: segments_date
+      default: ''
+      type: string
+    - name: segments_device
+      src: segments_device
+      default: ''
+      type: string
+    - name: metrics_active_view_impressions
+      src: metrics_active_view_impressions
+      default: ''
+      type: long
+    - name: metrics_active_view_measurability
+      src: metrics_active_view_measurability
+      default: ''
+      type: double
+    - name: metrics_active_view_measurable_cost_micros
+      src: metrics_active_view_measurable_cost_micros
+      default: ''
+      type: long
+    - name: metrics_active_view_measurable_impressions
+      src: metrics_active_view_measurable_impressions
+      default: ''
+      type: long
+    - name: metrics_active_view_viewability
+      src: metrics_active_view_viewability
+      default: ''
+      type: double
+    - name: metrics_clicks
+      src: metrics_clicks
+      default: ''
+      type: long
+    - name: metrics_conversions
+      src: metrics_conversions
+      default: ''
+      type: double
+    - name: metrics_conversions_value
+      src: metrics_conversions_value
+      default: ''
+      type: double
+    - name: metrics_cost_micros
+      src: metrics_cost_micros
+      default: ''
+      type: long
+    - name: metrics_impressions
+      src: metrics_impressions
+      default: ''
+      type: long
+    - name: metrics_interaction_event_types
+      src: metrics_interaction_event_types
+      default: ''
+      type: json
+    - name: metrics_interactions
+      src: metrics_interactions
+      default: ''
+      type: long
+    - name: metrics_view_through_conversions
+      src: metrics_view_through_conversions
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+triggers: []
+notifications: []
